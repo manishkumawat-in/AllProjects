@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block login_page %}
+
+    <div class="container mt-5 w-50">      
+        <form class="card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>LOGIN</h2>
+            <hr>
+            
+            {% if messages %}
+            <div class="alert alert-info" role="alert">
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="mb-3">
+              <label for="username" class="form-label">USERNAME</label>
+              <input type="text" name="username" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">PASSWORD</label>
+                <input type="password" class="form-control" name="password"></input>
+            </div>      
+            <p>Don't have <a href="/registration">CREATE</a></p>
+            <button type="submit" class="btn btn-success mt-3">LOGIN</button>
+          </form>
+    </div>
+{% endblock %}

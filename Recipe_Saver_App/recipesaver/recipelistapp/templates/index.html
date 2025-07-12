@@ -1,0 +1,55 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container mt-5 w-50">      
+        <form class="card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="d-flex justify-content-between">
+              <h2>ADD RECIPE</h2>
+              <a href="logout_page" class="btn btn-secondary h-100">LOGOUT</a>
+            </div>
+            <hr>
+            <div class="mb-3">
+              <label for="recipename" class="form-label">RECIPE NAME</label>
+              <input type="text" name="name" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">DESCRIPTION</label>
+                <textarea class="form-control" name="description" rows="3"></textarea>
+            </div>      
+            <div class="mb-3">
+                <label for="image" class="form-label">RECIPE IMAGE</label>
+                <input type="file" name="image" class="form-control">
+              </div>
+            <button type="submit" class="btn btn-success mt-3">ADD RECIPE</button>
+          </form>
+    </div>
+
+    <!-- {{context}} -->
+  <div class="container col-12">
+    <table class="table mt-5 ms-3">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">NAME</th>
+          <th scope="col">DESCRIPTION</th>
+          <th scope="col">IMAGE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for recipe in context %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{ recipe.name }}</td>
+            <td>{{ recipe.description }}</td>
+            <td class="w-25">
+              <img class="w-25" src="media/{{recipe.image}}" alt="image">
+            </td>
+            <td><a href="delete_recipe/{{recipe.id}}" class="btn btn-danger">DELETE</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
