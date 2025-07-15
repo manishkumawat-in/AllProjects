@@ -1,0 +1,19 @@
+input {
+  width: 250px;
+  height: 50px;
+  margin: 10px 0;
+  font-size: larger;
+}
+.container {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  width: 250px;
+}
+.btn {
+  width: 60px;
+  height: 60px;
+  font-size: x-large;
+}
+
+
